@@ -4,7 +4,7 @@ FROM nginx:alpine AS base
 COPY . /usr/share/nginx/html/
 
 # Configure nginx with basic optimization and logging to stdout/stderr
-RUN ./default.conf /etc/nginx/conf.d/default.conf
+COPY ./default.conf /etc/nginx/conf.d/default.conf
 
 # Forward nginx logs to Docker log collector
 RUN ln -sf /dev/stdout /var/log/nginx/access.log && \
